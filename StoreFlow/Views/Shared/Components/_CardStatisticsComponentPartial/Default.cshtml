@@ -6,49 +6,49 @@
                     <div class="statistics-item">
                         <p>
                             <i class="icon-sm fa fa-user mr-2"></i>
-                            Kategori Sayısı
+                            Müşteri Sayısı
                         </p>
-                        <h2>54000</h2>
+                        <h2>@ViewBag.totalCustomerCount</h2>
                         <label class="badge badge-outline-success badge-pill">2.7% increase</label>
                     </div>
                     <div class="statistics-item">
                         <p>
-                            <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                            Avg Time
+                            <i class="icon-sm fas fa-sitemap mr-2"></i>
+                            Toplam Kategori
                         </p>
-                        <h2>123.50</h2>
+                        <h2>@ViewBag.totalCategoryCount</h2>
                         <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                     </div>
                     <div class="statistics-item">
                         <p>
-                            <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                            Downloads
+                            <i class="icon-sm fas fa-cubes mr-2"></i>
+                            Toplam Ürün Sayısı
                         </p>
-                        <h2>3500</h2>
+                        <h2>@ViewBag.totalProductCount</h2>
                         <label class="badge badge-outline-success badge-pill">12% increase</label>
                     </div>
                     <div class="statistics-item">
                         <p>
-                            <i class="icon-sm fas fa-check-circle mr-2"></i>
-                            Update
+                            <i class="icon-sm fas fa-credit-card mr-2"></i>
+                            Ortalama Müşteri Bakiyesi
                         </p>
-                        <h2>7500</h2>
+                        <h2 style="font-family: Calibri">@ViewBag.avgCustomerBalance.ToString("C2")</h2>
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                     </div>
                     <div class="statistics-item">
                         <p>
-                            <i class="icon-sm fas fa-chart-line mr-2"></i>
-                            Sales
+                            <i class="icon-sm fas fa-shopping-cart mr-2"></i>
+                            Toplam Sipariş Sayısı
                         </p>
-                        <h2>9000</h2>
+                        <h2>@ViewBag.totalOrderCount</h2>
                         <label class="badge badge-outline-success badge-pill">10% increase</label>
                     </div>
                     <div class="statistics-item">
                         <p>
-                            <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                            Pending
+                            <i class="icon-sm fas fa-truck mr-2"></i>
+                            Sipariş Edilen Ürün
                         </p>
-                        <h2>7500</h2>
+                        <h2>@ViewBag.sumOrderProductCount</h2>
                         <label class="badge badge-outline-danger badge-pill">16% decrease</label>
                     </div>
                 </div>
