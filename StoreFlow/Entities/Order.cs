@@ -9,3 +9,4 @@ public class Order
     public decimal UnitPrice { get; set; }
     public decimal TotalPrice { get; set; }
     public DateTime OrderDate { get; set; }
+}
