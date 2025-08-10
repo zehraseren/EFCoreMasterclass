@@ -1,0 +1,55 @@
+﻿@model List<Order>
+
+<div class="col-md-8 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <i class="fas fa-table"></i>
+                Son Siparişler
+            </h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Müşteri</th>
+                            <th>Ürün</th>
+                            <th>Adet</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="font-weight-bold">
+                                    @item.Customers.CustomerName @item.Customers.CustomerSurname
+                                </td>
+                                <td class="text-muted">
+                                    @item.Products.ProductName
+                                </td>
+                                <td>
+                                    @item.OrderCount
+                                </td>
+                                <td>
+                                    <label class="@item.status.GetBadgeColor()">@item.status.GetDescription()</label>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <i class="fas fa-calendar-alt"></i>
+                Takvim
+            </h4>
+            <div id="inline-datepicker-example" class="datepicker"></div>
+        </div>
+    </div>
+</div>

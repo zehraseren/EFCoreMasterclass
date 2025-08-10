@@ -41,6 +41,7 @@
                         @await Component.InvokeAsync("_DailySalesComponentPartial")
 
                     </div>
+
                     <div class="row">
                         <div class="col-12 grid-margin">
                             <div class="card">
@@ -179,186 +180,16 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <i class="fas fa-table"></i>
-                                        Sales Data
-                                    </h4>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Customer</th>
-                                                    <th>Item code</th>
-                                                    <th>Orders</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="font-weight-bold">
-                                                        Clifford Wilson
-                                                    </td>
-                                                    <td class="text-muted">
-                                                        PT613
-                                                    </td>
-                                                    <td>
-                                                        350
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-success badge-pill">Dispatched</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="font-weight-bold">
-                                                        Mary Payne
-                                                    </td>
-                                                    <td class="text-muted">
-                                                        ST456
-                                                    </td>
-                                                    <td>
-                                                        520
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-warning badge-pill">Processing</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="font-weight-bold">
-                                                        Adelaide Blake
-                                                    </td>
-                                                    <td class="text-muted">
-                                                        CS789
-                                                    </td>
-                                                    <td>
-                                                        830
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-danger badge-pill">Failed</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="font-weight-bold">
-                                                        Adeline King
-                                                    </td>
-                                                    <td class="text-muted">
-                                                        LP908
-                                                    </td>
-                                                    <td>
-                                                        579
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-primary badge-pill">Delivered</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="font-weight-bold">
-                                                        Bertie Robbins
-                                                    </td>
-                                                    <td class="text-muted">
-                                                        HF675
-                                                    </td>
-                                                    <td>
-                                                        790
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-info badge-pill">On Hold</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        Calendar
-                                    </h4>
-                                    <div id="inline-datepicker-example" class="datepicker"></div>
-                                </div>
-                            </div>
-                        </div>
+
+                        @await Component.InvokeAsync("_SalesDataComponentPartial")
+
                     </div>
                     <div class="row">
-                        <div class="col-md-7 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <i class="fas fa-thumbtack"></i>
-                                        Todo
-                                    </h4>
-                                    <div class="add-items d-flex">
-                                        <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
-                                        <button class="add btn btn-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
-                                    </div>
-                                    <div class="list-wrapper">
-                                        <ul class="d-flex flex-column-reverse todo-list">
-                                            <li>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox">
-                                                        Meeting with Alisa
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                            <li class="completed">
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox" checked>
-                                                        Call John
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox">
-                                                        Create invoice
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox">
-                                                        Print Statements
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                            <li class="completed">
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox" checked>
-                                                        Prepare for presentation
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="checkbox" type="checkbox">
-                                                        Pick up kids from school
-                                                    </label>
-                                                </div>
-                                                <i class="remove fa fa-times-circle"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                        @await Component.InvokeAsync("_TodoComponentPartial")
+
                         <div class="col-md-5 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
