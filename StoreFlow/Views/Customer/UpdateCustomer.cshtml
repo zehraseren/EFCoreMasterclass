@@ -1,0 +1,43 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Müşteri Güncelleme Sayfası</h4>
+                <form class="forms-sample" method="post">
+                    <input type="hidden" asp-for="CustomerId" />
+                    <div class="form-group">
+                        <label>Müşteri Adı</label>
+                        <input type="text" class="form-control" placeholder="Müşteri adını yazınız" asp-for="CustomerName">
+                    </div>
+                    <div class="form-group">
+                        <label>Müşteri Soyadı</label>
+                        <input type="text" class="form-control" placeholder="Müşteri soyadını yazınız" asp-for="CustomerSurname">
+                    </div>
+                    <div class="form-group">
+                        <label>İl</label>
+                        <input type="text" class="form-control" placeholder="İl adını yazınız" asp-for="CustomerCity">
+                    </div>
+                    <div class="form-group">
+                        <label>İlçe</label>
+                        <input type="text" class="form-control" placeholder="ilçe adını yazınız" asp-for="CustomerDistrict">
+                    </div>
+                    <div class="form-group">
+                        <label>Görsel Url</label>
+                        <input type="text" class="form-control" placeholder="Görsel yolu ekleyiniz" asp-for="CustomerImageUrl">
+                    </div>
+                    <div class="d-flex justify-content-end mt-4 none-border">
+                        <button type="submit" class="btn btn-outline-success mr-3 btn-rounded">Güncelle</button>
+                        <a href="/Customer/CustomerList/" class="btn btn-outline-danger btn-rounded mr-2">Vazgeç</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
