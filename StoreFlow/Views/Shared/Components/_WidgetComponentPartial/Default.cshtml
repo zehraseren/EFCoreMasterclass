@@ -1,0 +1,152 @@
+﻿<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">Kategori Sayısı</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0">@ViewBag.categoryCount</h2>
+                            </div>
+                            <small class="text-gray"><em>Toplam @ViewBag.categoryCount kategori bulunuyor.</em> </small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-sitemap text-danger icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">En Pahalı Ürün</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0" style="font-family: Calibri">@ViewBag.productMaxPrice.ToString("C2")</h2>
+                            </div>
+                            <small class="text-gray"><em>Bu Ürün: @ViewBag.productMaxPriceProductName</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-arrow-up text-info icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">En Ucuz Ürün</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0" style="font-family: Calibri">@ViewBag.productMinPrice.ToString("C2")</h2>
+                            </div>
+                            <small class="text-gray"><em>Bu Ürün: @ViewBag.productMinPriceProductName</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-arrow-down text-danger icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">Toplam Ürün Sayısı</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0">@ViewBag.totalSumProductStock</h2>
+                            </div>
+                            <small class="text-gray"><em>Stokta @ViewBag.totalSumProductStock ürün bulunuyor</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-cubes text-danger icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">Ortalama Ürün Stok Sayısı</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0">@ViewBag.avgProductStock</h2>
+                            </div>
+                            <small class="text-gray"><em>Toplam Ürün Stok Sayısı / Ürün Adet Değeri</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-clipboard text-info icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">Ortalama Ürün Fiyatı</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0" style="font-family: Calibri">@ViewBag.avgProductPrice.ToString("C2")</h2>
+                            </div>
+                            <small class="text-gray"><em>1 Adet ürün için ortalama fiyat</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-spinner text-danger icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">1000 TL'den Yüksek Fiyatlı Ürün Sayısı</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0">@ViewBag.biggerPriceThan1000ProductCount</h2>
+                            </div>
+                            <small class="text-gray"><em>Fiyatı 1000 TL'den Yüksek Ürün Sayısı</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-bolt text-danger icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-0">Stoğu 50-100 Arasındaki Ürün</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-inline-block pt-3">
+                            <div class="d-md-flex">
+                                <h2 class="mb-0">@ViewBag.stockCountBiggerThan50AndSmaller100ProductCount</h2>
+                            </div>
+                            <small class="text-gray"><em>Stok Sayısı 50'den büyük ve 100'den küçük ürün</em></small>
+                        </div>
+                        <div class="d-inline-block">
+                            <i class="fas fa-compress text-info icon-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
