@@ -27,6 +27,10 @@ public class StoreContext : DbContext
             .Property(p => p.ProductPrice)
             .HasColumnType("decimal(18,2)");
 
+        modelBuilder.Entity<Order>()
+            .Property(o => o.Status)
+            .HasConversion<string>();
+
         base.OnModelCreating(modelBuilder);
     }
 }

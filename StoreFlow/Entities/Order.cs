@@ -1,4 +1,6 @@
-﻿namespace StoreFlow.Entities;
+﻿using StoreFlow.Enums;
+
+namespace StoreFlow.Entities;
 
 public class Order
 {
@@ -11,5 +13,5 @@ public class Order
     public DateTime OrderDate { get; set; }
     public Product Products { get; set; }
     public Customer Customers { get; set; }
-    public string? status { get; set; }
+    public OrderStatusType Status { get; set; }
 }
