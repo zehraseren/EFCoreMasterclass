@@ -1,0 +1,87 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "CreateOrder";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Sipariş Ekleme Sayfası</h4>
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label>Müşteri Seçiniz</label>
+                        <select asp-for="CustomerId" class="form-control" asp-items="@(IEnumerable<SelectListItem>)ViewBag.customers">
+                            <option value="">Müşteri Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Seçiniz</label>
+                        <select asp-for="ProductId" id="ProductId" class="form-control" asp-items="@(IEnumerable<SelectListItem>)ViewBag.products">
+                            <option value="">Ürün Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sipariş Adet</label>
+                        <input type="number" class="form-control" asp-for="OrderCount" id="OrderCount" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Birim Fiyat</label>
+                        <input type="hidden" asp-for="UnitPrice" id="UnitPrice" />
+                        <input type="text" class="form-control" id="UnitPriceDisplay" readonly style="font-family: Calibri">
+                    </div>
+                    <div class="form-group">
+                        <label>Toplam Fiyat</label>
+                        <input type="hidden" asp-for="TotalPrice" id="TotalPrice" />
+                        <input type="text" class="form-control" id="TotalPriceDisplay" readonly style="font-family: Calibri">
+                    </div>
+                    <div class="d-flex justify-content-end mt-4 none-border">
+                        <button type="submit" class="btn btn-outline-success mr-3 btn-rounded">Siparişi Oluştur</button>
+                        <a href="/Order/OrderListAsynchronous/" class="btn btn-outline-danger btn-rounded mr-2">Vazgeç</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Sayısal değerleri TR ₺ formatında göstermek için
+        function formatCurrency(num) {
+            return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(num);
+        }
+
+        function calculateTotal() {
+            var quantity = parseInt($("#OrderCount").val()) || 0;
+            var unitPrice = parseFloat($("#UnitPrice").val()) || 0;
+            var unitPrice = quantity * unitPrice;
+            $("#TotalPrice").val(unitPrice);
+            $("#TotalPriceDisplay").val(formatCurrency(unitPrice));
+        }
+
+        // Ürün seçildiğinde fiyatı alma
+        $("#ProductId").change(function () {
+            var productId = $(this).val();
+            if (productId) {
+                $.getJSON('/Order/GetProductPrice', { productId: productId }, function (data) {
+                    $("#UnitPrice").val(data); // backend numeric
+                    $("#UnitPriceDisplay").val(formatCurrency(data)); // frontend formatlı
+                    calculateTotal();
+                });
+            } else {
+                $("#UnitPrice").val('');
+                $("#UnitPriceDisplay").val('');
+                $("#TotalPrice").val('');
+                $("#TotalPriceDisplay").val('');
+            }
+        });
+
+        // Adet değiştiğinde toplam hesaplama
+        $("#OrderCount").on("input", function () {
+             calculateTotal();
+        });
+    </script>
+}
