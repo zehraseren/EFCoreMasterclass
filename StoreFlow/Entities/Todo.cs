@@ -7,4 +7,5 @@ public class Todo
     public int TodoId { get; set; }
     public string Description { get; set; }
     public TaskStatusType Status { get; set; }
+    public TodoPriorityType Priority { get; set; }
 }
