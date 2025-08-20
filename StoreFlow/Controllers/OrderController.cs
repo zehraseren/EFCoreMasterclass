@@ -136,24 +136,22 @@ public class OrderController : Controller
     {
         var orders = _context.Orders.ToList();
 
-        if (filterType == "start")
+        if (!string.IsNullOrEmpty(name))
         {
-            // DB'den alır
-            var list = _context.Orders.AsEnumerable();
-
-            // Description'a göre filtreleme yapar
-            list = list.Where(o => o.Status.ToString().GetDescription().StartsWith(name, StringComparison.OrdinalIgnoreCase));
-
-            return View(list.ToList());
-        }
-        else if (filterType == "end")
-        {
-            var values = orders
-             .Where(o => o.Status.ToString().GetDescription()
-                 .EndsWith(name, StringComparison.OrdinalIgnoreCase))
-             .ToList();
-
-            return View(values);
+            if (filterType == "start")
+            {
+                orders = orders
+                    .Where(o => o.Status.GetDescription()
+                        .StartsWith(name, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            else if (filterType == "end")
+            {
+                orders = orders
+                    .Where(o => o.Status.GetDescription()
+                        .EndsWith(name, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
         }
 
         return View(orders);
