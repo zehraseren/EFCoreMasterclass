@@ -31,6 +31,10 @@ public class StoreContext : DbContext
             .Property(o => o.Status)
             .HasConversion<string>();
 
+        modelBuilder.Entity<Todo>()
+            .Property(o => o.Status)
+            .HasConversion<string>();
+
         base.OnModelCreating(modelBuilder);
     }
 }
