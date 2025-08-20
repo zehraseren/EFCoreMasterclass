@@ -15,10 +15,10 @@
                 <ul class="d-flex flex-column-reverse todo-list">
                     @foreach (var item in Model)
                     {
-                        <li class="@(item.Status ? "completed" : "")">
+                        <li class="@(item.Status == TaskStatusType.Completed ? "completed " : "")">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="checkbox" type="checkbox" checked="@(item.Status == true)">
+                                    <input class="checkbox" type="checkbox" checked="@(item.Status == TaskStatusType.Completed)">
                                     @(item.Description.Length > 80 ? item.Description.Substring(0, 80) : item.Description)
                                 </label>
                             </div>
