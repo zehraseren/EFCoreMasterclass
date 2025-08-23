@@ -23951,23 +23951,23 @@ dl li {
   z-index: 1;
 }
 
-.solid-bullet-list li:nth-child(1):before {
+.solid-bullet-list li:nth-child(5n+1):before {
   background: #04B76B;
 }
 
-.solid-bullet-list li:nth-child(2):before {
+.solid-bullet-list li:nth-child(5n+2):before {
   background: #FF5E6D;
 }
 
-.solid-bullet-list li:nth-child(3):before {
+.solid-bullet-list li:nth-child(5n+3):before {
   background: #0B94F7;
 }
 
-.solid-bullet-list li:nth-child(4):before {
+.solid-bullet-list li:nth-child(5n+4):before {
   background: #F5A623;
 }
 
-.solid-bullet-list li:nth-child(5):before {
+.solid-bullet-list li:nth-child(5n+5):before {
   background: #392C70;
 }
 
