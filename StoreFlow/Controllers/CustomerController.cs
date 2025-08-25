@@ -1,4 +1,5 @@
-﻿using StoreFlow.Context;
+﻿using StoreFlow.Models;
+using StoreFlow.Context;
 using StoreFlow.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -78,5 +79,72 @@ public class CustomerController : Controller
             ViewBag.message = $"{city} şehrinde hiç müşteri yok";
 
         return View();
+    }
+
+    public IActionResult GetCustomerListByCity()
+    {
+        var groupedCustomers = _context.Customers
+            .ToList()
+            .GroupBy(c => c.CustomerCity)
+            .ToList();
+
+        return View(groupedCustomers);
+    }
+
+    public IActionResult CustomersByCityCount()
+    {
+        var query = from c in _context.Customers
+                    group c by c.CustomerCity into cityGroup
+                    select new CustomerCityGroupViewModel
+                    {
+                        City = cityGroup.Key,
+                        CustomerCount = cityGroup.Count()
+                    };
+
+        var result = query.OrderByDescending(c => c.CustomerCount).ToList();
+        return View(result);
+    }
+
+    public IActionResult CustomerCityList()
+    {
+        var cities = _context.Customers
+            .Select(c => c.CustomerCity)
+            .Distinct()
+            .ToList();
+
+        return View(cities);
+    }
+
+    public IActionResult ParallelCustomers()
+    {
+        var customers = _context.Customers.ToList();
+        var result = customers
+            .AsParallel()
+            .Where(c => c.CustomerCity
+            // StringComparison kullanarak büyük/küçük harf duyarsız arama
+            .StartsWith("A", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        return View(result);
+    }
+
+    public IActionResult CustomerListExceptCityIstanbul()
+    {
+        // Except metodu ile İstanbul dışındaki müşterileri listeleme
+        //var allCustomers = _context.Customers.ToList();
+        //var istanbulCustomers = _context.Customers
+        //    .Where(c => c.CustomerCity == "İstanbul")
+        //    .ToList();
+        //var result = allCustomers.Except(istanbulCustomers).ToList();
+
+        // ExceptBy metodu ile İstanbul dışındaki müşterileri listeleme
+        var istanbulCustomers = _context.Customers
+            .Where(c => c.CustomerCity == "İstanbul")
+            .Select(c => c.CustomerId) // Burada sadece ID'leri alır
+            .ToList();
+        var allCustomers = _context.Customers.ToList();
+        var result = allCustomers.ExceptBy(istanbulCustomers, c => c.CustomerId).ToList();
+
+        return View(result);
     }
 }
