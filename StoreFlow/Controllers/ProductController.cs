@@ -113,4 +113,39 @@ public class ProductController : Controller
         var products = GetProductsWithCategory().Skip(4).Take(10).ToList();
         return View(products);
     }
+
+    [HttpGet]
+    public IActionResult CreateProductWithAttach()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult CreateProductWithAttach(Product product)
+    {
+        var category = new Category { CategoryId = 1 };
+        _context.Categories.Attach(category);
+
+        var productValue = new Product
+        {
+            ProductName = product.ProductName,
+            ProductPrice = product.ProductPrice,
+            ProductStock = product.ProductStock,
+            Category = category
+        };
+        _context.Products.Add(productValue);
+        _context.SaveChanges();
+
+        return RedirectToAction("ProductList");
+    }
+
+    public IActionResult ProductCount()
+    {
+        var value = _context.Products.LongCount();
+        ViewBag.count = value;
+
+        var lastProduct = _context.Products.OrderBy(p => p.ProductId).Last();
+        ViewBag.lastProduct = lastProduct.ProductName;
+        return View();
+    }
 }
