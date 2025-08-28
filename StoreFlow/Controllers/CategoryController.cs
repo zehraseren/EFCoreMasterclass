@@ -65,4 +65,26 @@ public class CategoryController : Controller
         _context.SaveChanges();
         return RedirectToAction("CategoryList");
     }
+
+    public IActionResult ReverseCategory()
+    {
+        var firstCategoryValue = _context.Categories.First();
+        ViewBag.firstCategoryName = firstCategoryValue.CategoryName;
+
+        var secondCategoryValue = _context.Categories.SingleOrDefault(c => c.CategoryName == "Bilgisayar Bileşenleri");
+        if (secondCategoryValue != null)
+        {
+            ViewBag.secondCategoryValue = $"{secondCategoryValue.CategoryStatus} - {secondCategoryValue.CategoryId}";
+        }
+        else
+        {
+            ViewBag.secondCategoryValue = "Kategori bulunamadı";
+        }
+
+        var categories = _context.Categories
+            .OrderBy(c => c.CategoryId)
+            .Reverse()
+            .ToList();
+        return View(categories);
+    }
 }

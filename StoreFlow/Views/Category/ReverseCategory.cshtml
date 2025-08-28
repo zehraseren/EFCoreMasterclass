@@ -1,0 +1,51 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "ReverseCategory";
+    Layout = "~/Views/Layout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Tersten Kategori Listesi</h4>
+                <div class="">
+                    <h5>İlk Kategori: @ViewBag.firstCategoryName</h5>
+                    <h5>Kategori Statüsü ve ID: @ViewBag.secondCategoryValue</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kategori Adı</th>
+                                <th>Durumu</th>
+                                <th>Ürünleri Göster</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>
+                                        <a href="/Category/ChangeCategoryStatus/@item.CategoryId" class="btn btn-outline-dark btn-rounded">@(item.CategoryStatus ? "Pasif Yap" : "Aktif Yap")</a>
+                                    </td>
+                                    <td><a href="/Product/ListProductsByCategory/@item.CategoryId" class="btn btn-outline-info btn-rounded">Göster</a></td>
+                                    <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-outline-danger btn-rounded">Sil</a></td>
+                                    <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-outline-success btn-rounded">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
